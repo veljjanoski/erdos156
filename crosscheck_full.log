@@ -1,0 +1,16 @@
+all k=7 witnesses verified by definition
+80 [0, 43, 47, 48, 50, 68] maximal Sidon in Z_n: True
+120 [0, 4, 28, 45, 46, 48, 57] maximal Sidon in Z_n: True
+brute force cyclic k=2: max n = 5
+brute force cyclic k=3: max n = 12
+brute force cyclic k=4: max n = 28
+brute force cyclic k=5: max n = 50
+cyclic k=3: gpu max n = 14, brute force max n = 14, mismatches so far 0 [1s]
+cyclic k=4: gpu max n = 30, brute force max n = 30, mismatches so far 0 [0s]
+cyclic k=5: gpu max n = 50, brute force max n = 50, mismatches so far 0 [3s]
+cyclic k=6: gpu max n = 84, brute force max n = 84, mismatches so far 0 [637s]
+MISMATCHES: []
+interval k=3: gpu max n = 10, OEIS = 10
+interval k=4: gpu max n = 22, OEIS = 22
+interval k=5: gpu max n = 42, OEIS = 42
+interval k=6: gpu max n = 67, OEIS = 67

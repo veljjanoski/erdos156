@@ -21,23 +21,26 @@ interval {1, …, n} (OEIS A382397; i(8) = 144 is proved in F. Huber's 2026 prep
 
 | k | i(k) interval | i(k)/k³ | c(k) cyclic | c(k)/k³ | witness in Z_{c(k)} |
 |---|---|---|---|---|---|
-| 3 | 10 | 0.37 | 12 | 0.44 | {0, 1, 4} |
-| 4 | 22 | 0.34 | 28 | 0.44 | {0, 18, 25, 26} |
+| 3 | 10 | 0.37 | 14 | 0.52 | {0, 2, 3} |
+| 4 | 22 | 0.34 | 30 | 0.47 | {0, 19, 21, 22} |
 | 5 | 42 | 0.34 | 50 | 0.40 | {0, 7, 19, 20, 22} |
 | 6 | 67 | 0.31 | 84 | 0.39 | {0, 7, 55, 56, 58, 67} |
 | 7 | 101 | 0.29 | 126 | 0.37 | {0, 21, 50, 103, 104, 119, 121} |
 | 8 | 144 | 0.28 | | | |
 
-For k = 7, maximal 7-sets exist in Z_n for every 48 ≤ n ≤ 118 and then only for n = 120, 122, 124, 126.
-The trivial bound is c(k) ≤ (k³ − k² + 2k)/2. The extremal sets consist of a small dense cluster plus a few far
-points; no algebraic structure is visible, and the ratio n/k³ decreases slowly in both settings.
+For k = 7, maximal 7-sets exist in Z_n for every 48 ≤ n ≤ 118, then only for n = 120, 122, 124, 126, and for no
+n in 127..203. The trivial bounds (count of blockable points) are c(k) ≤ (k³ + k² + 2k)/2 and i(k) ≤ (k³ + k)/2;
+all searches cover every n up to these bounds. No algebraic structure is apparent in the witnesses, and the
+ratio n/k³ decreases slowly in both settings.
 
 Verification. `cyc_gpu.py` (CuPy + numba: the CPU enumerates Sidon prefixes, each GPU thread completes one
 prefix and tests maximality) was compared instance by instance with `verify156.exists_bf`, an independent
-brute force over all k-subsets containing 0 using the sum definition, for every n at k = 3..6 (`crosscheck.py`,
-no mismatch), and for k = 7 on 121 ≤ n ≤ 135 (`bf_check7.log`: solutions exactly at 122, 124, 126). All 75
-witnesses printed for k = 7 were re-checked from the definition (`verify_witnesses.py`). The interval version
-of the program reproduces i(3..6) = 10, 22, 42, 67 from A382397.
+brute force over all k-subsets containing 0 using the sum definition, for every n up to the trivial bound at
+k = 3..6 (`crosscheck_full.log`, no mismatch), and for k = 7 on 121 ≤ n ≤ 135 (`bf_check7.log`: solutions
+exactly at 122, 124, 126) and n = 170 (`bf_check7_170.log`). All 75 witnesses printed for k = 7 were re-checked
+from the definition (`verify_witnesses.py`). The interval version of the program reproduces i(3..6) = 10, 22,
+42, 67 over the full ranges; i(7) = 101 follows from the A382397/A399118 data (n ≤ 183 > 175 = (7³ + 7)/2) and
+i(8) = 144 from Huber's theorem.
 
 ## 2. Why the natural algebraic lift does not remove the log
 
@@ -56,4 +59,4 @@ one. Weil-type equidistribution controls only classes of size ≥ √q, which wo
 ## Files
 
 `cyc_gpu.py`, `cyc_search.py` (CPU-only predecessor), `verify156.py`, `crosscheck.py`, `bf_check.py`,
-`verify_witnesses.py`, `scalar_lift.py`; logs `cyc7.log`, `fixed_runs2.log`, `bf_check7.log`, `verify.log`.
+`verify_witnesses.py`, `scalar_lift.py`; logs `cyc7.log`, `cyc7_ext.log`, `crosscheck_full.log`, `bf_check7.log`, `bf_check7_170.log`, `verify.log`.

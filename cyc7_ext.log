@@ -1,0 +1,6 @@
+  n=160: maximal=False perfect=False witness=None [118.4s]
+  n=170: maximal=False perfect=False witness=None [191.6s]
+  n=180: maximal=False perfect=False witness=None [302.9s]
+  n=190: maximal=False perfect=False witness=None [446.6s]
+  n=200: maximal=False perfect=False witness=None [664.0s]
+cyc k=7: max n with maximal size-k Sidon set = 0; largest n with a perfect one = 0  [17201s]

@@ -131,7 +131,9 @@ if __name__ == '__main__':
     ap.add_argument('nmin', type=int, nargs='?', default=None); ap.add_argument('nmax', type=int, nargs='?', default=None)
     ap.add_argument('--depth', type=int, default=3); ap.add_argument('--topdown', action='store_true')
     a = ap.parse_args(); cyclic = a.mode == 'cyc'; k = a.k
-    nmax = a.nmax or (k**3 - k*k + 2*k) // 2 + 1; nmin = a.nmin or k
+    # trivial bound: blocked points <= k^2(k-1)/2 (values a+b-c) + midpoints (k(k-1)/2, twice for even cyclic n)
+    #                + k elements (+ k points a+n/2 for even cyclic n)  =>  n <= (k^3+k^2+2k)/2 cyclic, (k^3+k)/2 interval
+    nmax = a.nmax or ((k**3 + k*k + 2*k) // 2 if cyclic else (k**3 + k) // 2); nmin = a.nmin or k
     best = 0; bestp = 0; t0 = time.time()
     rng = range(nmax, nmin - 1, -1) if a.topdown else range(nmin, nmax + 1)
     for n in rng:
