@@ -1,0 +1,4 @@
+cyc k=3: max n with maximal size-k Sidon set = 12; largest n with a perfect one = 12  [1s]
+cyc k=4: max n with maximal size-k Sidon set = 28; largest n with a perfect one = 24  [0s]
+cyc k=5: max n with maximal size-k Sidon set = 50; largest n with a perfect one = 42  [1s]
+cyc k=6: max n with maximal size-k Sidon set = 84; largest n with a perfect one = 0  [51s]

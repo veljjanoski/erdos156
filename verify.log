@@ -1,0 +1,9 @@
+all k=7 witnesses verified by definition
+80 [0, 43, 47, 48, 50, 68] maximal Sidon in Z_n: True
+120 [0, 4, 28, 45, 46, 48, 57] maximal Sidon in Z_n: True
+brute force cyclic k=2: max n = 5
+brute force cyclic k=3: max n = 12
+brute force cyclic k=4: max n = 28
+brute force cyclic k=5: max n = 50
+brute force k=6, n=80: True n=81..97: [84] [43s]
+brute force k=7, n=120: True n=121..123: [122] [561s]
